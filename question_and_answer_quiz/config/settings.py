@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-05!)w89+6ak$7ld-o0&_%0rq2^h@wzx$6tir@*ues3um8a6fh*"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if int(os.getenv("DJANGO_DEBUG")) in [0, 1]:
+    DEBUG = bool(int(os.getenv("DJANGO_DEBUG")))
+else:
+    raise ValueError("Invalid DEBUG mode")
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [] + os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
 
 # Application definition
@@ -38,8 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "user",
-]
+] + os.getenv("DJANGO_APPS", "").split(",")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
