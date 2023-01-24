@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "question-and-answer-quiz"
-version = "0.0.0"
+version = "0.1.0"
 description = "Simple question and answe quiz game"
 authors = ["Giovani Liskoski Zanini <giovanilzanini@hotmail.com>"]
 license = "MIT"
