@@ -1,5 +1,4 @@
 from rest_framework.serializers import ModelSerializer
-from django.forms import fields
 
 from user.models import UserModel
 
