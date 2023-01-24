@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "question-and-answer-quiz"
-version = "0.0.0"
+version = "0.2.0"
 description = "Simple question and answe quiz game"
 authors = ["Giovani Liskoski Zanini <giovanilzanini@hotmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "question_and_answer_quiz"}]
+packages = [{ include = "question_and_answer_quiz" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
