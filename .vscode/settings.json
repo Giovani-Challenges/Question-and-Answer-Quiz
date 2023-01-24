@@ -1,0 +1,5 @@
+{
+  "python.testing.pytestArgs": ["question_and_answer_quiz"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
+}
