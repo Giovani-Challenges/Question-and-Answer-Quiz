@@ -21,3 +21,9 @@ class UserCallbackSerializer(serializers.Serializer):  # pylint: disable=W0223
     username = fields.CharField(allow_blank=False)
     first_name = fields.CharField(allow_blank=False)
     last_name = fields.CharField(allow_blank=False)
+
+
+class ChangePasswordSerializer(serializers.Serializer):  # pylint: disable=W0223
+    email = fields.EmailField()
+    password = fields.CharField()
+    new_password = fields.CharField()
