@@ -2,8 +2,8 @@ from typing import List, Optional, Tuple
 
 from jose.exceptions import ExpiredSignatureError, JWTError
 from rest_framework.permissions import BasePermission
-from utils.errors import Unauthorized, UnprocessableEntity
 from utils.decorators import inject
+from utils.errors import Unauthorized, UnprocessableEntity
 from utils.jwt import JwtToken
 
 
