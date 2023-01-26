@@ -99,7 +99,6 @@ class TestRefreshToken(TestCase):
     def test_should_do_not_refresh_token_when_exp_field_has_been_expired_from_refresh_token(
         self,
     ):
-        os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
         token = jwt.encode(
             claims={
                 "permissions": ["PLAYER"],
@@ -133,7 +132,6 @@ class TestRefreshToken(TestCase):
     def test_should_do_not_refresh_token_when_contain_different_user_id_in_token_and_refresh_token(
         self,
     ):
-        os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
         token = jwt.encode(
             claims={
                 "permissions": ["PLAYER"],
@@ -165,7 +163,6 @@ class TestRefreshToken(TestCase):
 
     @pytest.mark.freeze_time("2017-05-21")
     def test_should_refresh_token_field_does_not_contain_refresh_permission(self):
-        os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
         token = jwt.encode(
             claims={
                 "permissions": ["PLAYER"],
@@ -197,9 +194,6 @@ class TestRefreshToken(TestCase):
 
     @pytest.mark.freeze_time("2017-05-21")
     def test_should_refresh_token(self):
-        os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
-        os.environ["JWT_TOKEN_EXPIRE"] = "1"
-        os.environ["JWT_REFRESH_TOKEN_EXPIRE"] = "2"
         token = jwt.encode(
             claims={
                 "permissions": ["PLAYER"],
@@ -236,9 +230,9 @@ class TestRefreshToken(TestCase):
         )
 
         assert response.status_code == 200
-        assert json_token == {"permissions": ["PLAYER"], "user": 1, "exp": 1495328400.0}
+        assert json_token == {"permissions": ["PLAYER"], "user": 1, "exp": 1495346400.0}
         assert json_refresh_token == {
             "permissions": ["REFRESH"],
             "user": 1,
-            "exp": 1495332000.0,
+            "exp": 1495368000.0,
         }
