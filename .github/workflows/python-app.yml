@@ -18,6 +18,9 @@ jobs:
       DJANGO_APPS: ${{ secrets.DJANGO_APPS }}
       DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
       DJANGO_DEBUG: ${{ secrets.DJANGO_DEBUG }}
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      JWT_TOKEN_EXPIRE: ${{ secrets.JWT_TOKEN_EXPIRE }}
+      JWT_REFRESH_TOKEN_EXPIRE: ${{ secrets.JWT_REFRESH_TOKEN_EXPIRE }}
 
     steps:
       - uses: actions/checkout@v3
@@ -41,6 +44,9 @@ jobs:
       DJANGO_APPS: ${{ secrets.DJANGO_APPS }}
       DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
       DJANGO_DEBUG: ${{ secrets.DJANGO_DEBUG }}
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      JWT_TOKEN_EXPIRE: ${{ secrets.JWT_TOKEN_EXPIRE }}
+      JWT_REFRESH_TOKEN_EXPIRE: ${{ secrets.JWT_REFRESH_TOKEN_EXPIRE }}
 
     steps:
       - uses: actions/checkout@v3
