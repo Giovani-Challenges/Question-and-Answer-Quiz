@@ -165,7 +165,7 @@ class TestRefreshToken(TestCase):
 
     @pytest.mark.freeze_time("2017-05-21")
     def test_should_refresh_token_field_does_not_contain_refresh_permission(self):
-        os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
+        # os.environ["JWT_SECRET_KEY"] = "abc0123456789xyz"
         token = jwt.encode(
             claims={
                 "permissions": ["PLAYER"],
