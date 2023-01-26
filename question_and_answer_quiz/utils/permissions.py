@@ -1,10 +1,10 @@
 from typing import List, Optional, Tuple
+
+from jose.exceptions import ExpiredSignatureError, JWTError
 from rest_framework.permissions import BasePermission
-from user.models.user import UserModel
-from user.views.errors import UnprocessableEntity, Unauthorized
+from user.views.errors import Unauthorized, UnprocessableEntity
 from utils.decorators import inject
 from utils.jwt import JwtToken
-from jose.exceptions import ExpiredSignatureError, JWTError
 
 
 @inject(JwtToken)
@@ -65,7 +65,8 @@ class IsAdm(BaseBearer):
 class IsPlayer(BaseBearer):
     def has_permission(self, request, view, **kwargs) -> bool:
         return super().has_permission(request, view, permissions=["PLAYER"])
-    
+
+
 class IsAnyUser(BaseBearer):
     def has_permission(self, request, view, **kwargs) -> bool:
         return super().has_permission(request, view, permissions=["PLAYER", "ADM"])
