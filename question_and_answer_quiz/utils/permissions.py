@@ -2,7 +2,7 @@ from typing import List, Optional, Tuple
 
 from jose.exceptions import ExpiredSignatureError, JWTError
 from rest_framework.permissions import BasePermission
-from user.views.errors import Unauthorized, UnprocessableEntity
+from utils.errors import Unauthorized, UnprocessableEntity
 from utils.decorators import inject
 from utils.jwt import JwtToken
 
