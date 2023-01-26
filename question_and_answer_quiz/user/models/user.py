@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List, Literal
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
@@ -47,6 +48,15 @@ class UserModel(AbstractBaseUser):
     REQUIRED_FIELDS = ["email", "username", "first_name", "last_name"]
 
     objects = UserManager()
+
+    @property
+    def permissions(self) -> List[Literal["ADM", "PLAYER"]]:
+        perm = []
+        if self.is_admin:
+            perm.append("ADM")
+        if self.is_player:
+            perm.append("PLAYER")
+        return perm
 
     class Meta:
         db_table = "User"
