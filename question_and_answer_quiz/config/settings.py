@@ -36,7 +36,7 @@ else:
 
 ALLOWED_HOSTS = [] + os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 
-
+APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
